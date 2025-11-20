@@ -20,15 +20,15 @@ int main(void) {
     {
          int index = (y * width + x) * channels; //find 2d info in a 1d space (just a formula <3)
 
-        unsigned char r = image[index + 0];
-        unsigned char g = image[index + 1];
-        unsigned char b = image[index + 2];
+        int r = image[index + 0];
+        int g = image[index + 1];
+        int b = image[index + 2];
 
-        unsigned char gray = 0.299 * r + 0.587 * g + 0.114 * b; //based on human visual perception
+        float gray = 0.299 * r + 0.587 * g + 0.114 * b; //based on human visual perception
 
-        unsigned char *gradient  =  "@#W$9876543210?!abc;:+=-,._ ";
+        char *gradient  =  "@#W$9876543210?!abc;:+=-,._ ";
         
-        fprintf(out, "%c ", gradient[(gray * (27 - 1)) / 255]); //formula to map 0->255 gray scale to 0->27 ascii art
+        fprintf(out, "%c ", gradient[(int)(gray * (27 - 1)) / 255]); //formula to map 0->255 gray scale to 0->27 ascii art
 
 
         if(x==width)
